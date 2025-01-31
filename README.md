@@ -1,4 +1,6 @@
 # React + Vite
+Proyecto a modo de aprendizaje utilizando api externa y json.
+css con tailwind
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
