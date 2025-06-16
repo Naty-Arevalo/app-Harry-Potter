@@ -1,5 +1,4 @@
-import
- { useState } from 'react'
+import { useState } from 'react'
 
 const Buscador = () => {
 
@@ -36,9 +35,10 @@ const Buscador = () => {
     <div className= 'mt-6 p-4'>
         <h1 className='text-4xl font-light'>Buscador Por Personajes:</h1>
         <div className='mb-4 '> 
-            <input className=' m-3 rounded-2xl  border-gray-400 border-2 w-64 h-10 placeholder:italic p-2' type="text"
+            <input className=' m-3 rounded-2xl  border-gray-400 border-2 w-64 h-10 placeholder:italic p-2' 
+            type="text"
             value={q}
-            onChange={(e) => setQ(e.target.value)} 
+            onChange={(e) => setQ(e.target.value)}
             placeholder='Nombre de Personaje'/>            
             <button className=' bg-rgb text-white border-2 rounded-2xl text-4xl px-1  '
             onClick={searchCharacters}>Buscar

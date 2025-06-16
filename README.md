@@ -1,8 +1,55 @@
-# React + Vite
+Aplicación web interactiva inspirada en el universo de Harry Potter, que permite explorar personajes, libros y hechizos. Desarrollada con React y React Router, utiliza un contexto global para manejar la búsqueda de información en distintas secciones.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🧩 Tecnologías Utilizadas
+React JS – Biblioteca principal para construir la interfaz de usuario.
 
-Currently, two official plugins are available:
+React Router DOM – Para navegación entre rutas sin recarga.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Context API – Para compartir el estado de búsqueda entre componentes.
+
+Tailwind – Estilos personalizados.
+
+Vite – Para un entorno de desarrollo rápido.
+
+📁 Estructura de Carpetas
+css
+Copiar
+Editar
+src/
+├── App.jsx
+├── assets/
+│   ├── components/
+│   │   ├── Home/
+│   │   ├── Libros/
+│   │   ├── Personajes/
+│   │   ├── Hechizos/
+│   │   ├── Resultados.jsx
+│   │   └── Context/
+│   │       └── CartContext.jsx
+│   └── Navbar/
+│       └── Navbar.jsx
+└── App.css
+
+🚀 Cómo ejecutar el proyecto
+1. Clonar el repositorio
+
+git clone https://github.com/Naty-Arevalo/app-Harry-Potter.git
+(cd nombre-del-repo)
+
+
+2. Instalar dependencias
+npm install
+
+3. Iniciar servidor de desarrollo
+npm run dev
+
+
+🧭 Navegación
+/ – Página principal
+/personajes – Muestra los personajes del universo
+/libros – Lista de libros
+/hechizos – Hechizos mágicos
+/resultados – Página con resultados filtrados según la búsqueda
+
+🌐 Estado global
+Se utiliza un Provider (SearchProvider) para compartir el término de búsqueda entre las diferentes secciones y mostrar resultados relevantes.
