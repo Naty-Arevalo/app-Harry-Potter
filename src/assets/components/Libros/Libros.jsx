@@ -1,87 +1,55 @@
 import { useEffect, useState } from "react"
 import { pedirDatos } from "../../Helpers/PedirDatos"
-import ButtonBack from '../ButtonBack'
+import { useApi } from "../../../Hooks/useApi"
+import { FaBook } from "react-icons/fa"
+import LibrosDetail from "./LibrosDetail"
 
 const Libros = () => {
 
-    const [libros, setLibros ] = useState({})
-
     const [tapa, setTapa] = useState([])
 
-    useEffect(() => {
-   fetch("https://harry-potter-api.onrender.com/libros")
-   .then ((res) => res.json())
-   .then ((data) =>{
-    setLibros(data)
-   
-   })
-    }, [])
+    const {data: libros, loading, error} = useApi('https://harry-potter-api.onrender.com/libros')
 
     useEffect(()=>{
         pedirDatos()
         .then((res) =>{
             setTapa(res)
-         
         })
     },[])
+
+    if (loading) return(
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4">
+            <div className="text-center">
+                <FaBook className="text-4xl sm:text-6xl text-blue-400 animate-spin mx-auto mb-4"/>
+                <p className="text-lg sm:text-2xl text-white font-merriweather">Cargando Libros...</p>
+            </div>
+        </div>
+    )
+    if(error) return (
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4">
+            <div className="text-center">
+                <FaBook className="text-4xl sm:text-6xl text-red-400 mx-auto mb-4"/>
+                <p className="text-lg sm:text-2xl text-red-400 font-merriweather">Error: {error}</p>
+            </div>
+        </div>
+    )
     
   return (
-    <>
-    <h1 className="text-9xl">Libros</h1>
-    <div className=" p-3">
-        {libros.length > 0 && tapa.length > 0 && libros.map((libro) =>{
-            const tapaCorresponiente = tapa.find (t => t.id === libro.id)
-            return(
-                <div className="flex justify-center items-center p-3 mb-5
-                 border-b-2  h-auto" key={libro.id}>
-                    <div className="w-1/2 ">
-                        <h2 className="text-6xl">{libro.id}- {libro.libro}</h2>
-                        <p className="text-3xl">{libro.fecha_de_lanzamiento}</p>
-                        <p className="text-xl px-5 font-mono">{libro.descripcion}</p>
-                    </div>
-                    <div className="w-1/2 flex items-center justify-center">
-                        {tapaCorresponiente ? (
-                            <img src={tapaCorresponiente.img} alt={`tapa del libro ${libro.libro}`} className="max-w-full h-80 objet-cover drop-shadow-3xl" />
-                        ): (
-                            <p>No hay tapa disponible</p>
-                        )}
-                    </div>
-                </div>
-            )
-        })}
-    </div>
-    <div>
-       <ButtonBack/> 
-    </div>
-    {/* <div className="flex justify-between  border-2">
-
-        {libros.length >1 &&
-        <div className="w-1/2"  >
-               {libros.map((libro) => (
-                <div className="border-red border-2" key={libro.libro}>
-                    <div className="">
-                        <h2 className="text-6xl">{libro.id}, {libro.libro}</h2>
-                        <p className="text-3xl">{libro.fecha_de_lanzamiento}</p>
-                        <p className="text-xl4">{libro.descripcion}</p>
-                    </div>
-                </div>
-            ))}    
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+            style={{backgroundImage: "url('https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/03/Hogwarts-Castle.jpg')"}}>
         </div>
-        }
-        <div className="w-1/2">
-            {tapa.map((tap) =>(
-                <div key={tap.id}>
-                    <div>
-                        <img src={tap.img} alt={tap.id} />
-                    </div>
-                    
-                </div>
-                
-            ))}
+        
+        <div className="relative z-10">
+            <header className="text-center p-6 sm:py-8 px-4">
+                <h1 className="font-crimson text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-200 to-blue-100 bg-clip-text text-transparent">Todos los Libros de la saga</h1>
+            </header>
+            
         </div>
-    </div> */}
-    
-    </>
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+            <LibrosDetail libros={libros || []} tapa={tapa}/>
+        </div>
+    </div>
   )
 }
 

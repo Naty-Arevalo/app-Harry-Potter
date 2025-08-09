@@ -10,7 +10,10 @@ export default {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)'
       },
       fontFamily:{
-        Playwrite:['Playwrite NO', 'sans-serif']
+        Playwrite:['Playwrite NO', 'sans-serif'],
+        crimson: 'var(--font-crimson)',
+        opensans: 'var(--font-open)',
+        merriweather:'var(--font-merriweather)'
       },
     },
   },

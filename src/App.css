@@ -4,20 +4,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Grey+Qo&family=Playwrite+NO:wght@100..400&display=swap');
 
 
-#root {
-  /* max-width: 1280px; */
-  margin: 0 auto ;
-  padding: 2rem;
-  text-align: center;
-  font-family: grey qo;
-  font-size: 40px;
-  /* background-image :linear-gradient(#f9f9f4 , rgba(0,0,0,1%)), url("https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/03/Hogwarts-Castle.jpg") ;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; */
+:root {
+  
   background-color: grey;
-  width: 100%;
-  min-height: 100vh;
+ 
   box-sizing: border-box;
+
+/*FUENTES*/
+  --font-crimson: 'Crimson Text', serif;
+  --font-open: 'Open Sans', sans-serif;
+  --font-merriweather: 'Merriweather', serif;
+}
+
+
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 

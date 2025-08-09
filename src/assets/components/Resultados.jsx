@@ -6,6 +6,7 @@ import ButtonBack from "./ButtonBack"
 const Resultados = () => {
 
     const {results} = useContext(SearchContext)
+    
   return (<>
     <div className="">
         {results.personajes.length > 0 && (
