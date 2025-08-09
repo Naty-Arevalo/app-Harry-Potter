@@ -1,18 +1,37 @@
-Aplicación web interactiva inspirada en el universo de Harry Potter, que permite explorar personajes, libros y hechizos. Desarrollada con React y React Router, utiliza un contexto global para manejar la búsqueda de información en distintas secciones.
+
+
+
+(SearchProvider) para compartir el término de búsqueda entre las diferentes secciones y mostrar resultados relevante
+🧙‍♀️ Enciclopedia Mágica
+Aplicación web desarrollada con React JS, que permite explorar personajes, hechizos y libros del universo de Harry Potter. Utiliza React Router DOM para navegación entre páginas, Context API para manejar la búsqueda global, y consume datos en tiempo real desde una API externa pública.
+
+El diseño de la interfaz está realizado con Tailwind CSS, logrando una experiencia moderna, responsiva y accesible.
 
 🧩 Tecnologías Utilizadas
-React JS – Biblioteca principal para construir la interfaz de usuario.
+React JS – Para crear la interfaz dinámica y modular.
 
-React Router DOM – Para navegación entre rutas sin recarga.
+React Router DOM – Navegación entre rutas sin recarga.
 
-Context API – Para compartir el estado de búsqueda entre componentes.
+Context API – Para manejar el estado global de búsqueda.
 
-Tailwind – Estilos personalizados.
+API externa – Toda la información proviene de harry-potter-api.onrender.com.
 
-Vite – Para un entorno de desarrollo rápido.
+Tailwind CSS – Para un diseño rápido, limpio y responsivo.
 
-📁 Estructura de Carpetas
-css
+🌐 API Externa
+Esta aplicación consume datos de la siguiente API externa:
+
+🔸 https://harry-potter-api.onrender.com/personajes
+Devuelve un array de personajes con atributos como nombre, casa, imagen, etc.
+
+🔸 https://harry-potter-api.onrender.com/hechizos
+Devuelve una lista de hechizos con su nombre y efecto.
+
+🔸 https://harry-potter-api.onrender.com/libros
+Devuelve un listado de libros con título, autor, portada e información adicional.
+
+📁 Estructura de Carpetas (resumen)
+pgsql
 Copiar
 Editar
 src/
@@ -20,36 +39,38 @@ src/
 ├── assets/
 │   ├── components/
 │   │   ├── Home/
-│   │   ├── Libros/
 │   │   ├── Personajes/
 │   │   ├── Hechizos/
+│   │   ├── Libros/
 │   │   ├── Resultados.jsx
 │   │   └── Context/
 │   │       └── CartContext.jsx
-│   └── Navbar/
-│       └── Navbar.jsx
-└── App.css
+│   ├── Navbar/
+├── index.css  <-- incluye Tailwind
 
 🚀 Cómo ejecutar el proyecto
 1. Clonar el repositorio
 
 git clone https://github.com/Naty-Arevalo/app-Harry-Potter.git
-(cd nombre-del-repo)
-
 
 2. Instalar dependencias
 npm install
-
 3. Iniciar servidor de desarrollo
 npm run dev
 
-
 🧭 Navegación
 / – Página principal
-/personajes – Muestra los personajes del universo
-/libros – Lista de libros
-/hechizos – Hechizos mágicos
-/resultados – Página con resultados filtrados según la búsqueda
 
-🌐 Estado global
-Se utiliza un Provider (SearchProvider) para compartir el término de búsqueda entre las diferentes secciones y mostrar resultados relevantes.
+/personajes – Lista de personajes desde API
+
+/hechizos – Lista de hechizos desde API
+
+/libros – Lista de libros desde API
+
+/resultados – Resultados filtrados desde búsqueda
+
+🔍 Sistema de Búsqueda Global
+Se utiliza un SearchProvider basado en React Context que permite compartir el término de búsqueda entre todas las vistas. Al buscar desde cualquier sección, los resultados aparecen en la ruta /resultados, filtrados dinámicamente.
+
+
+
