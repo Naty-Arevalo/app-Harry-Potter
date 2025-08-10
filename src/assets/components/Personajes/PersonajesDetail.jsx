@@ -16,10 +16,10 @@ const PersonajesDetail = ( { personajes }) => {
   
     {personajes.length > 1 ? (
       <>
-        <div className='grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 sm:p-6'>
+        <div className='grid gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 sm:p-6'>
             {currentItems.map((persona) =>(
                 <div className="group bg-gradient-to-br from-purple-800/20 to-purple-600/20 backdrop-blur-sm rounded-xl sm:rounded-2xl border-2 border-purple-400/30 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25 overflow-hidden" key={persona.id} >
-                  <div className="relative overflow-hidden h-48 sm:h-64 md:h-80">
+                  <div className="relative overflow-hidden h-48 sm:h-48 md:h-80">
                     {persona.imagen ? (
                       <img 
                         className='w-full h-full object-contain group-hover:scale-110 transition-transform duration-300'
