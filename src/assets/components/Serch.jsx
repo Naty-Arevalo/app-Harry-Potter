@@ -63,7 +63,7 @@ const Serch = () => {
          {/* Iconos temáticos */}
          <div className="flex justify-center gap-6 mb-6">
           <div className="flex items-center gap-2 text-purple-300">
-            <FaHatWizard className="text-2xl"/>
+            <FaHatWizard className="text-2xl "/>
             <span className="font-open text-sm ">Personajes</span>
           </div>
           <div className="flex items-center gap-2 text-yellow-300">
