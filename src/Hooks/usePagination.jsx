@@ -11,6 +11,7 @@ export const usePagination = (items, itemsPerPage = 9) => {
 
     const goToPage = (page) =>{
         setCurrentPage(Math.max(1, Math.min(page, totalPages)))
+        window.scrollTo({top:0, behavior:'smooth'})
     }
     return{
         currentItems,
