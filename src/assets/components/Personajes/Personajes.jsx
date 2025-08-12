@@ -37,7 +37,7 @@ const Personajes = () => {
         {/*Header de la pagina*/}
         <div className="realtive z-10">
           <header className="text-center py-6 sm:py-8 px-4">
-            <h1 className="font-merriweather text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 bg-grandient-to-r from-purple-200 to purple-100 bg-clip-text text-transparent-">Personajes Magicos</h1>
+            <h1 className="font-crimson text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white to-purple-500 bg-clip-text text-transparent">Personajes Magicos</h1>
             <p className="font-crimson text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 px-4">Explora todos los personajes del mundo Harry Potter</p>
           </header>
         </div>

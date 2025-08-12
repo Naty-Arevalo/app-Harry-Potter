@@ -1,5 +1,4 @@
 import  { useContext, useEffect, useState } from "react";
-import Resultados from "./Resultados";
 import { Link } from "react-router-dom";
 import { SearchContext } from "./Context/CartContext";
 import { FaSearch, FaHatWizard, FaMagic, FaBook } from "react-icons/fa";
@@ -11,6 +10,8 @@ const Serch = () => {
   const [libros, setLibros] = useState([]);
   const [hechizos, setHechizos] = useState([]);
   const {setResults} = useContext(SearchContext)
+  const [error, setError] = useState("")
+ 
 
   useEffect(() => {
     fetch("https://harry-potter-api.onrender.com/personajes")
@@ -28,7 +29,19 @@ const Serch = () => {
   }, []);
 
     const searchCharacters = ()=>{
-        const searchQuery = q.toLowerCase()
+      //validar que el campo de busqueda no este vacio
+      if(!q.trim()){
+        setError("por favor, ingresa un termino de busqueda")
+        setResults({
+          personajes:[],
+          libros: [],
+          hechizos:[]
+        })
+        return
+      }
+
+      setError("") //limpia error anterior
+      const searchQuery = q.toLowerCase().trim()
 
     const filteredPersonajes = personajes.filter((personaje)=>{
         const nombre = personaje.personaje ? personaje.personaje.toLowerCase() : "";
@@ -49,10 +62,9 @@ const Serch = () => {
         libros: filteredLibros,
         hechizos: filteredHechizos
     })
-    
+  } 
 
 
-}
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
@@ -83,22 +95,38 @@ const Serch = () => {
             type="text" 
             className=" w-full pl-10 pr-4 py-3 text-base bg-white/10 backdrop-blur-sm border-2 border-purple-400/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-300 focus:outline-none transition-all duration-300 "
             value={q}
-            onChange={(e)=> setQ(e.target.value)}
-            placeholder="Buscar personajes, hechizos, ibros"
-            onKeyDown={(e)=>e.key === 'Enter' && searchCharacters()}
-            />
+            onChange={(e)=>{ 
+              setQ(e.target.value)
+              setError("")
+            }}
+            placeholder="Buscar personajes, hechizos, Libros"
+          />
         </div>
+
         <Link
-        className="font-open group flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-bold- textl-xl rounded-xl border-2 border-purple-400/30 hover:border-purple-300 transition-all duration-300 transform hover:scale-105 shadow-lg hover: shadow purple-500/25"
-        onClick={searchCharacters}
-        to={"/resultados"}
+          className="font-opensans group flex items-center gap-2 px-6 bg-gradient-to-r from-purp-600 to-purple-700 hover:from-purple-500 from-purple-600 text-white font-bold text-xl rounded-xl border-2 border-purple-400/30 hover:border-purple-300 transition-all duration-300 transoform hover:scale-105 shadow-lg hover:shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={searchCharacters}
+          disabled= {!q.trim()}
+          to= {"/resultados"}
         >
           <FaSearch className="text-lg group-hover:animate-pulse"/>
           Buscar
         </Link>
-
       </div>
+
+      {/*MEnsaje de error*/ }
+      {error && (
+        <div className="mt-4 text-center">
+          <p className="text-red-400 font-crimson text-sm bg-red-900/20 px-4 py-2 rounded-lg border border-red-400/30">
+            {error}
+          </p>
+        </div>
+      )}
+
+      
     </div>
 )};
 
 export default Serch;
+
+
